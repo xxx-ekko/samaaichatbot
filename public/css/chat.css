@@ -1,0 +1,409 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #18181a;
+  font-family: 'Nunito', sans-serif;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  background-color: #09090b;
+  /* Fond neutre, ajustable selon tes besoins */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 150px;
+  font-family: 'Modica Medium', sans-serif;
+  color: white;
+  height: 60px;
+  z-index: 1000;
+  /* Assure que la barre reste au-dessus des autres éléments */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+
+.navbar-title {
+  font-size: 25px;
+  font-weight: 900;
+  background: linear-gradient(to bottom, #ffffff, #444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  /* Assure que le titre reste en blanc */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.new-chat {
+  margin-right: 55px;
+    font-weight: 700;
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.new-chat:hover {
+  color: #dddddd;
+}
+
+.stop-conversation {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  margin-right: -65px;
+  padding: 8px 12px;
+    font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.stop-conversation:hover {
+  background-color: #ff1a1a;
+}
+
+#chatbot-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 700px;
+  height: 100vh;
+  background-color: #18181a;
+  padding: 20px;
+}
+
+#chatbot {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+#chat-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#chat-header img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+#chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  /* Permet le défilement */
+  margin-bottom: 10px;
+  padding: 10px;
+  max-height: calc(100vh - 200px);
+  /* Ajustez la hauteur selon votre design */
+}
+
+/* Masquer la barre de défilement */
+#chat-messages::-webkit-scrollbar {
+  width: 0;
+  /* Largeur de la barre de défilement à 0 */
+  background: transparent;
+  /* Fond transparent pour éviter l'affichage */
+}
+
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  animation: fadeIn 0.3s ease;
+  clear: both;
+}
+.icon-user::before {
+  content: '👤';
+  /* Icône utilisateur */
+  font-size: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.icon-bot::before {
+  content: '🤖';
+  /* Icône bot */
+  font-size: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.user-message {
+  font-weight: 550;
+  color: #f0f0f0;
+  text-align: left;
+  display: inline-block;
+  margin-top: 25px;
+  max-width: 100%;
+  padding: 10px 15px;
+  margin-left: auto;
+  margin-right: 0;
+  float: right;
+  overflow-wrap: break-word;
+    /* Gère le débordement */
+    word-wrap: break-word;
+    /* Compatibilité avec les anciens navigateurs */
+    white-space: pre-wrap;
+    /* Préserve les espaces et les retours à la ligne */
+}
+
+.bot-message {
+  background-color: #1b1b1b;
+  color: #f0f0f0;
+  margin-top: 25px;
+  max-width: 100%;
+  padding: 10px 15px;
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+  display: inline-block;
+  float: left;
+  border-radius: 10px;
+  animation: slide-in-left 0.5s ease;
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#user-input {
+  width: 100%;
+  background-color: #000000;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 15px 60px 15px 20px;
+  /* Espace à droite pour l'icône */
+  color: #f0f0f0;
+  font-size: 1em;
+  resize: none;
+  overflow: hidden;
+  min-height: 50px;
+  max-height: 200px;
+  outline: none;
+}
+
+#user-input:focus {
+  outline: none;
+  /* Supprimer la bordure au focus */
+}
+
+
+
+.input-group-wrapper {
+  position: relative;
+  width: 100%;
+  border: 1px solid #444;
+  /* Bordure extérieure */
+  border-radius: 10px;
+  /* Ajoute de l'espace entre la bordure et le groupe d'input */
+}
+.input-group {
+  position: relative;
+  width: 100%;
+  background-color: #000000;
+  border-top: 15px solid #000000;
+  /* Bordure du haut */
+  border-bottom: 50px solid #000000;
+  /* Bordure du bas */
+  border-left: 15px solid #000000;
+  /* Bordure de gauche */
+  border-right: 15px solid #000000;
+  /* Bordure de droite */
+  border-radius: 10px;
+  /* Coins arrondis */
+    display: flex;
+    align-items: center;
+}
+
+.input-group input {
+  background-color: #000000;
+  border: 1px solid #444;
+  border-radius: 10px;
+  /* Forme arrondie */
+  padding: 15px 60px 15px 20px;
+  /* Espace pour le bouton à droite */
+  color: #f0f0f0;
+  font-size: 1em;
+  width: 100%;
+  transition: none;
+  /* Pas d'animation au focus */
+  outline: none;
+  /* Supprimer le contour bleu par défaut */
+}
+
+.input-group input:focus {
+  outline: none;
+  /* Supprimer le contour bleu lors du focus */
+  background-color: #000000;
+  /* Pas de changement de couleur */
+}
+
+.input-group-append {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  /* Par défaut, non cliquable */
+}
+
+.input-group-append button {
+  background-color: #444;
+  border: none;
+  color: #888;
+  /* Grisé par défaut */
+  font-size: 1.5em;
+  padding: 0;
+  border-radius: 50%;
+  /* Bouton arrondi */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.input-group-append button.active {
+  background-color: #ffffff;
+  /* Devient blanc si du texte est saisi */
+  color: #000;
+  pointer-events: auto;
+  /* Cliquable quand du texte est saisi */
+  cursor: pointer;
+}
+
+.input-group-append button:focus {
+  outline: none;
+  /* Supprimer le contour bleu autour du bouton */
+}
+
+.input-group input:empty+.input-group-append button {
+  color: grey;
+}
+
+.frequent-questions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 7px;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.frequent-question {
+  background-color: #09090b;
+  color: #f0f0f0;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  border: 1px solid #3f3f3f;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  max-width: 305px;
+  text-align: center;
+  transition: transform 0.7s ease; /* Ajout de la transition pour l'effet de zoom */
+}
+
+.frequent-question:hover {
+  transform: scale(1.05); /* Zoom de 5% au survol */
+  background-color: #262628;
+}
+
+#typing-indicator {
+  display: none;
+  text-align: left;
+  font-style: italic;
+  color: #ccc;
+}
+
+.greeting {
+  text-align: center;
+  /* Centrer le contenu */
+  margin-top: 120px;
+  /* Espacer en bas */
+}
+
+.robot-video {
+  width: 300px;
+  /* Ajuster la taille de la vidéo */
+  height: auto;
+  /* Garde les proportions */
+  display: inline-block;
+  /* Pour s'assurer que la vidéo reste dans le flux */
+}
+
+.greeting h1 {
+  font-family: 'Modica Medium', sans-serif;
+  /* Assure-toi que la police est importée */
+  font-size: 60px;
+  /* Taille du texte pour le nom */
+  font-weight: bold;
+  /* Texte en gras */
+  background: linear-gradient(to bottom, #7579ff, #b224ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  /* Pour appliquer le dégradé au texte */
+}
+
+.greeting h2 {
+  font-family: 'Modica Medium', sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: gray;
+  /* Texte en gris */
+/* Espacement en haut */
+}
+
+.input-hint {
+  position: absolute;
+  bottom: 5px;
+  /* Ajuster pour contrôler la distance par rapport au bas */
+  left: 20px;
+  width: calc(100% - 40px);
+  font-size: 0.8em;
+  color: #868686;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+#welcome-section {
+  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.5s ease;
+  transform: translateY(0);
+}
+
+#welcome-section.hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  /* Déplace vers le haut */
+  pointer-events: none;
+  /* Pour ne plus interagir avec l'élément une fois caché */
+}
