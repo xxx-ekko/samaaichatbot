@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Models\Admin;
 
 class AdminLoginController extends Controller
 {
@@ -16,21 +14,25 @@ class AdminLoginController extends Controller
 
     public function login(Request $request)
     {
-        // Validation des données
+        // Validation des champs email et mot de passe
         $request->validate([
             'email' => 'required|email',
-            'mot_de_passe' => 'required',
+            'password' => 'required',
         ]);
+    
+        // Tentative d'authentification
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
 
-        // Tentative de connexion
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->mot_de_passe])) {
-            // Connexion réussie, redirige vers la page admin
-            return redirect()->route('admin.dashboard'); // Redirige vers la route qui affiche admin.blade.php
+            return redirect()->route('admin.dashboard');
         }
-
-        // Si la connexion échoue, redirige avec un message d'erreur personnalisé
-        return redirect()->back()->withErrors(['login' => "Vous n'êtes même pas un admin."]);
+    
+        // Si l'authentification échoue, renvoyer une erreur
+        return back()->withErrors([
+            'email' => 'Les informations d\'identification ne sont pas valides.',
+        ])->withInput($request->only('email'));
     }
+    
+    
 
     public function logout()
     {
