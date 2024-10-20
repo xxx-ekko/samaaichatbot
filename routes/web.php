@@ -33,7 +33,7 @@ Route::post('/chatbot/admin/login', [AdminLoginController::class, 'login'])->nam
 // Déconnexion de l'administrateur
 Route::post('/chatbot/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
-// Page après connexion (à créer plus tard)
+// Page après connexion
 Route::get('/chatbot/admin/dashboard', function () {
-    return view('admin'); // À remplacer par la vue appropriée plus tard
-})->name('admin.dashboard')->middleware('auth');
+    return view('admin'); // Remplace cette vue par celle que tu veux afficher pour l'admin
+})->name('admin.dashboard'); // Retiré le middleware 'auth' pour permettre l'accès

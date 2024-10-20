@@ -49,11 +49,6 @@
                         Connexion Administrateur
                     </span>
 
-                    <div class="wrap-input100 validate-input" data-validate="Entrez votre prénom et nom">
-                        <input class="input100" type="text" name="prenom_nom" placeholder="Prénom et Nom" required>
-                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
-                    </div>
-
                     <div class="wrap-input100 validate-input" data-validate="Entrez votre email">
                         <input class="input100" type="email" name="email" placeholder="Email" required>
                         <span class="focus-input100" data-placeholder="&#9993;"></span>
