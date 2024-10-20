@@ -27,6 +27,7 @@
 
 
 
+
     <div id="chatbot-container">
         <div id="chatbot">
             <div class="greeting" id="welcome-section">

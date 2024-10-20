@@ -5,10 +5,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
-    use HasFactory;
-
     protected $fillable = [
-        'prenom_nom',
+        'prenom_nom', // Si tu veux toujours utiliser ce champ dans la base de données
         'email',
         'mot_de_passe',
     ];
@@ -31,10 +29,4 @@ class Admin extends Authenticatable
     {
         return $this->mot_de_passe;
     }
-    public function getAuthPassword()
-    {
-        return $this->mot_de_passe; // Utiliser le champ 'mot_de_passe' pour l'authentification
-    }
-
 }
-

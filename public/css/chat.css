@@ -56,13 +56,7 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease-in-out;
   margin-right: 20px;
-}
-
-.talk-to-agent:hover {
-  background-color: #4CAF50;
-  /* Couleur de fond au survol */
-  color: #ffffff;
-  transform: scale(1.05);
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .stop-conversation {
@@ -80,6 +74,20 @@ body {
 
 .stop-conversation:hover {
   background-color: #ff1a1a;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 #chatbot-container {
