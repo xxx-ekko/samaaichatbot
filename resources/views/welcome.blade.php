@@ -18,10 +18,11 @@
             <span class="navbar-title">SamaAIchatbot</span>
         </div>
         <div class="navbar-right">
-            <a href="#" class="new-chat">New Chat</a>
+            <button class="talk-to-agent">Parler à un agent</button>
             <button class="stop-conversation">Arrêter la conversation</button>
         </div>
     </nav>
+
 
 
 

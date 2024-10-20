@@ -12,7 +12,6 @@ body {
 
 .navbar {
   background-color: #09090b;
-  /* Fond neutre, ajustable selon tes besoins */
   position: fixed;
   top: 0;
   left: 0;
@@ -25,7 +24,6 @@ body {
   color: white;
   height: 60px;
   z-index: 1000;
-  /* Assure que la barre reste au-dessus des autres éléments */
 }
 
 .navbar-left {
@@ -33,15 +31,13 @@ body {
   align-items: center;
 }
 
-
 .navbar-title {
   font-size: 25px;
   font-weight: 900;
   background: linear-gradient(to bottom, #ffffff, #444);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-  /* Assure que le titre reste en blanc */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .navbar-right {
@@ -49,17 +45,24 @@ body {
   align-items: center;
 }
 
-.new-chat {
-  margin-right: 55px;
-    font-weight: 700;
-  font-size: 16px;
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.talk-to-agent {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  padding: 8px 12px;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+  margin-right: 20px;
 }
 
-.new-chat:hover {
-  color: #dddddd;
+.talk-to-agent:hover {
+  background-color: #4CAF50;
+  /* Couleur de fond au survol */
+  color: #ffffff;
+  transform: scale(1.05);
 }
 
 .stop-conversation {
@@ -68,7 +71,7 @@ body {
   font-size: 14px;
   margin-right: -65px;
   padding: 8px 12px;
-    font-weight: 700;
+  font-weight: 700;
   border: none;
   border-radius: 5px;
   cursor: pointer;
