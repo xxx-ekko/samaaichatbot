@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
@@ -19,10 +17,19 @@ class Admin extends Authenticatable
         'mot_de_passe',
     ];
 
-    // Hasher le mot de passe avant de le stocker en base de données
-    public function setMotDePasseAttribute($value)
+    // Hachage du mot de passe avant de le stocker
+// Hachage du mot de passe avant de le stocker
+        public function setMotDePasseAttribute($value)
+        {
+            $this->attributes['mot_de_passe'] = bcrypt($value);
+        }
+
+    
+
+    // Utilisation de la colonne 'mot_de_passe' pour l'authentification
+    public function getAuthPassword()
     {
-        $this->attributes['mot_de_passe'] = bcrypt($value);
+        return $this->mot_de_passe;
     }
     public function getAuthPassword()
     {
