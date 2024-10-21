@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\AgentController;
 
 // Route pour afficher le formulaire d'inscription
 Route::get('/', function () {
@@ -37,3 +38,13 @@ Route::post('/chatbot/admin/logout', [AdminLoginController::class, 'logout'])->n
 Route::get('/chatbot/admin/dashboard', function () {
     return view('admin'); // Remplace cette vue par celle que tu veux afficher pour l'admin
 })->name('admin.dashboard'); // Retiré le middleware 'auth' pour permettre l'accès
+
+
+Route::get('/chat-agent', function () {
+    // Vous pouvez passer ici les données nécessaires comme le nom de l'utilisateur
+    $prenomNom = 'Nom Prénom Utilisateur'; // Remplacer par la logique appropriée pour récupérer le nom
+    return view('agent', ['prenomNom' => $prenomNom]);
+})->name('agent.chat');
+
+
+Route::get('/agent', [AgentController::class, 'index'])->name('agent.index');

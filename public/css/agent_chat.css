@@ -78,7 +78,6 @@ body {
 /* Bouton "STOP" */
 .stop-conversation {
   background-color: transparent;
-  /* Aucun fond */
   color: white;
   font-size: 14px;
   padding: 8px 12px;
@@ -87,13 +86,31 @@ body {
   /* Contour rouge */
   border-radius: 5px;
   cursor: pointer;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.5s ease, color 0.5s ease;
   display: flex;
   align-items: center;
   margin-right: -75px;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  /* Espace positif pour séparer les boutons */
 }
 
+/* Bouton "Retour" */
+.getback {
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+  padding: 8px 12px;
+  font-weight: 700;
+  border: 2px solid #343434;
+  /* Contour rouge */
+  border-radius: 5px;
+  margin-right: 40px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.5s ease, color 0.5s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Styles pour hover des boutons */
 .stop-conversation:hover {
   border-color: #ff1a1a;
   background-color: #ff1a1a;
@@ -101,7 +118,18 @@ body {
   /* Rouge plus intense au survol */
 }
 
+.getback:hover {
+  border-color: #343434;
+  background-color: #343434;
+  color: #ffffff;
+  /* Rouge plus intense au survol */
+}
 .stop-conversation i {
+  margin-right: 8px;
+  /* Espace entre l'icône et le texte */
+}
+
+.getback i {
   margin-right: 8px;
   /* Espace entre l'icône et le texte */
 }
@@ -120,6 +148,7 @@ body {
     transform: scale(1);
   }
 }
+
 
 #chatbot-container {
   display: flex;

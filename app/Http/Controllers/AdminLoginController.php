@@ -30,10 +30,7 @@ class AdminLoginController extends Controller
         return back()->withErrors([
             'email' => 'Les informations d\'identification ne sont pas valides.',
         ])->withInput($request->only('email'));
-        // Désactiver la validation et la tentative de connexion
-        // Peu importe les informations fournies, redirige directement vers la page admin
-
-        // Redirection directe vers le tableau de bord de l'administrateur
+        
         return redirect()->route('admin.dashboard'); // Redirige vers la vue admin.blade.php
     }
     
